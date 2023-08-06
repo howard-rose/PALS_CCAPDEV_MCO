@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     window.onclick = (e) => {
-        if (!e.target.matches(dropBtn)) {
+        if (!dropBtn.contains(e.target)) {
             if (dropdownContainer.classList.contains('show')) {
                 dropdownContainer.classList.remove('show');
             }

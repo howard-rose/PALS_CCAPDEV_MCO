@@ -16,7 +16,13 @@ async function main() {
 
     app.use('/static', express.static('public'));
     app.engine('hbs', exphbs.engine({
-        extname: 'hbs'
+        extname: 'hbs',
+        helpers: {
+            ifEq: function(arg1, arg2, options) {
+                //console.log('COMPARED');
+                return (arg1 == arg2) ? options.fn(this) : options.inverse(this);
+            }
+        }
     }));
     app.set('view engine', 'hbs');
     app.set('views', './src/views');

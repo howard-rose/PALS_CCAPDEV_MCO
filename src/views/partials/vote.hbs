@@ -1,0 +1,15 @@
+{{#ifEq current_user_vote 0}}
+    <span class="vote upvote off"></span>
+    <span class="vote-counter">{{score}}</span>
+    <span class="vote downvote off"></span>
+{{else}}
+    {{#ifEq current_user_vote 1}}
+        <span class="vote upvote on"></span>
+        <span class="vote-counter">{{score}}</span>
+        <span class="vote downvote off"></span>
+    {{else}}
+        <span class="vote upvote off"></span>
+        <span class="vote-counter">{{score}}</span>
+        <span class="vote downvote on"></span>
+    {{/ifEq}}
+{{/ifEq}}

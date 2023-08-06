@@ -7,8 +7,8 @@ import { Strategy as LocalStrategy } from 'passport-local';
 
 passport.use(new LocalStrategy(async (username, password, done) => {
     try {
-        console.log(`Received user: ${username}`);
-        console.log(`Received password: ${password}`);
+        //console.log(`Received user: ${username}`);
+        //console.log(`Received password: ${password}`);
         console.log('Authenticating!');
         const user = await User.findOne({username: username}).exec();
         
@@ -16,13 +16,13 @@ passport.use(new LocalStrategy(async (username, password, done) => {
             return done(null, false, { message: 'User not found.'});
         }
 
-        console.log('Correct user');
+        //console.log('Correct user');
 
         if (!(await user.comparePassword(password))) {
             return done(null, false, { message: 'Incorrect password.'});
         }
 
-        console.log('Correct password');
+        //console.log('Correct password');
 
         return done(null, user);
     } catch (err) {
@@ -31,12 +31,12 @@ passport.use(new LocalStrategy(async (username, password, done) => {
 }));
 
 passport.serializeUser((user, done) => {
-    console.log('USER BEING SERIALIZED');
+    //console.log('USER BEING SERIALIZED');
     return done(null, user.username);
 });
 
 passport.deserializeUser((user, done) => {
-    console.log('USER BEING DESERIALIZED');
+    //console.log('USER BEING DESERIALIZED');
     //const foundUser = User.findOne({username: user.username}).lean().exec();
     return done(null, user);
 });

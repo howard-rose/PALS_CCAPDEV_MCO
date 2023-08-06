@@ -9,16 +9,18 @@ import { loadPostById } from './helpers.js';
 const postRouter = Router();
 
 postRouter.get('/post/:postId', async (req, res) => {
+    const current_user = (req.isAuthenticated()) ? req.user : null;
+
     console.log('REQUEST RECEIVED!');
     console.log(req.params);
-    const currPost = await loadPostById(req.params.postId);
+    const currPost = await loadPostById(req.params.postId, current_user);
     console.log('Loaded post object from database:');
     //console.log(currPost);
     console.log(currPost);
     console.log('Post comments: ');
     //console.log(currPost.comments);
 
-    currPost.current_user = (req.isAuthenticated()) ? req.user : null;
+    currPost.current_user = current_user;
     
     res.render('post_main', currPost);
 });

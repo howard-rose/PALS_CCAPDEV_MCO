@@ -13,7 +13,7 @@ const commentVoteSchema = new Schema({
     },
     score: {
         type: SchemaTypes.Number,
-        enum: [-1, 1]
+        enum: [-1, 0, 1]
     }
 });
 

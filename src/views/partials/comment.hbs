@@ -1,12 +1,10 @@
-<div class="comment"> 
+<div class="comment" id="{{_id}}"> 
     <div class="post-info light">
         Posted by <span class="post-username">{{user.username}}</span> on {{date}}
     </div>
     <div class="comment-body">{{body}}</div>
     <div class="post-vote-bar">
-        <span class="vote upvote off"></span>
-        <span class="vote-counter">{{score}}</span>
-        <span class="vote downvote off"></span>
+        {{> vote}}
         <button class="reply">Reply</button>
     </div>
     {{#if comments}}

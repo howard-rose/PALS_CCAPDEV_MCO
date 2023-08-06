@@ -1,9 +1,10 @@
 <script src="/static/js/user_click.js"></script>
 <script src="/static/js/create_comment.js"></script>
+<script src="/static/js/vote_click.js"></script>
 <link rel="stylesheet" href="/static/css/post_main.css">
 {{> navbar}}
 <div id="post-container">
-    <div class="post-main-view">
+    <div class="post-main-view" id="{{_id}}">
         <div class="post-main-bar">
             <div class="post-info light">
                 Posted by <span class="post-username">{{user.username}}</span> on {{date}}
@@ -16,9 +17,7 @@
             </div>
         </div>
         <div class="post-vote-bar">
-            <span class="vote upvote off"></span>
-            <span class="vote-counter">{{score}}</span>
-            <span class="vote downvote off"></span>
+            {{> vote}}
             <span class="comment-count">{{comments.length}} comments</span>
         </div>
         <div id="comment-container">

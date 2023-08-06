@@ -23,7 +23,7 @@ router.get('/', async (req, res) => {
     res.render('index', {
         title: 'Redidit - Dive into anything',
         current_user: current_user,
-        posts: await loadPosts({})
+        posts: await loadPosts({}, current_user)
     });
 });
 

@@ -3,22 +3,21 @@ import { User } from '../models/user.js';
 import { Profile } from '../models/profile.js';
 import { Post } from '../models/post.js';
 import { Comment } from '../models/comment.js';
+import { loadPosts } from './helpers.js';
 
 const searchRouter = Router();
 
 searchRouter.get('/search/:searchQuery', async (req, res) => {
-    console.log(req.params.searchQuery);
-    
-    const results = await Post.find({
-        title: {$regex: req.params.searchQuery, $options: 'i'}
-    }).populate('user').lean().exec();
+    const current_user = (req.isAuthenticated()) ? req.user : null;
 
-    console.log(results);    
+    console.log(req.params.searchQuery);
 
     res.render('search_results', {
         title: 'Search results',
-        current_user: (req.isAuthenticated()) ? req.user : null,
-        posts: results
+        current_user: current_user,
+        posts: await loadPosts({
+            title: {$regex: req.params.searchQuery, $options: 'i'}
+        }, current_user)
     });
 });
 
