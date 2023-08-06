@@ -3,16 +3,16 @@ import { Schema, SchemaTypes, model } from 'mongoose';
 const commentSchema = new Schema({
     body: {
         type: SchemaTypes.String,
-        require: true
+        required: true
     },
     user: {
         type: SchemaTypes.ObjectId,
         ref: 'user',
-        require: true
+        required: true
     },
     date: {
         type: SchemaTypes.Date,
-        require: true
+        required: true
     },
     comments: [{
         type: SchemaTypes.ObjectId,

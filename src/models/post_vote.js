@@ -4,12 +4,12 @@ const postVoteSchema = new Schema({
     user: {
         type: SchemaTypes.ObjectId,
         ref: 'user',
-        require: true
+        required: true
     },
     post: {
         type: SchemaTypes.ObjectId,
         ref: 'post',
-        require: true
+        required: true
     },
     score: {
         type: SchemaTypes.Number,

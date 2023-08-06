@@ -3,17 +3,17 @@ import { Schema, SchemaTypes, model } from 'mongoose';
 const postSchema = new Schema({
     title: {
         type: SchemaTypes.String,
-        require: true
+        required: true
     },
     body: SchemaTypes.String,
     user: {
         type: SchemaTypes.ObjectId,
         ref: 'user',
-        require: true
+        required: true
     },
     date: {
         type: SchemaTypes.Date,
-        require: true
+        required: true
     },
     tags: [{
         type: SchemaTypes.String

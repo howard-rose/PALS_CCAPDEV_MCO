@@ -4,12 +4,12 @@ const commentVoteSchema = new Schema({
     user: {
         type: SchemaTypes.ObjectId,
         ref: 'user',
-        require: true
+        required: true
     },
     comment: {
         type: SchemaTypes.ObjectId,
         ref: 'comment',
-        require: true
+        required: true
     },
     score: {
         type: SchemaTypes.Number,
