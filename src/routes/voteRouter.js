@@ -10,13 +10,19 @@ const voteRouter = Router();
 voteRouter.post('/vote/post/:userId/:postId/:score', async (req, res) => {
     console.log('/vote/post/ POST request received');
 
-    const newPostVote = new PostVote({
-        user: req.params.userId,
-        post: req.params.postId,
-        score: req.params.score
-    });
+    let postVote = await PostVote.findOne({user: req.params.userId, post: req.params.postId}).exec();
 
-    newPostVote.save().then((result) => {
+    if (!postVote) {
+        postVote = new PostVote({
+            user: req.params.userId,
+            post: req.params.postId,
+            score: req.params.score
+        });
+    } else {
+        postVote.score = req.params.score;
+    }
+
+    postVote.save().then((result) => {
         res.sendStatus(200);
     }).catch(err => {
         console.error(err);
@@ -27,13 +33,19 @@ voteRouter.post('/vote/post/:userId/:postId/:score', async (req, res) => {
 voteRouter.post('/vote/comment/:userId/:commentId/:score', async (req, res) => {
     console.log('/vote/comment/ POST request received');
 
-    const newCommentVote = new commentVote({
-        user: req.params.userId,
-        comment: req.params.commentId,
-        score: req.params.score
-    });
+    let commentVote = await CommentVote.findOne({user: req.params.userId, comment: req.params.commentId}).exec();
 
-    newCommentVote.save().then((result) => {
+    if (!commentVote) {
+        commentVote = new CommentVote({
+            user: req.params.userId,
+            comment: req.params.commentId,
+            score: req.params.score
+        });
+    } else {
+        commentVote.score = req.params.score;
+    }
+
+    commentVote.save().then((result) => {
         res.sendStatus(200);
     }).catch(err => {
         console.error(err);
