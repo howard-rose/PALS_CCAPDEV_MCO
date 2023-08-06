@@ -3,6 +3,9 @@ import 'dotenv/config';
 // Web-app
 import express from 'express';
 import exphbs from 'express-handlebars';
+// Session and Auth
+import session from 'express-session';
+import passport from 'passport';
 // DB
 import { connect } from './src/models/db.js';
 // Routes
@@ -20,6 +23,14 @@ async function main() {
     app.set('view cache', false);
 
     app.use(express.json());
+
+    app.use(session({
+        secret: 'VERY very SECRET WOW',
+        resave: false,
+        saveUninitialized: true
+    }));
+    app.use(passport.initialize());
+    app.use(passport.session());
 
     app.use(router);
 

@@ -40,7 +40,7 @@ export async function loadComments(filter) {
 
 export async function loadPostScores(post) {
     post.score = await getScorePost(post._id);
-    console.log(`Score of post: ${post.score}`);
+    //console.log(`Score of post: ${post.score}`);
 
     for (const comment of post.comments) {
         await loadCommentScores(comment);

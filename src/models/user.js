@@ -38,8 +38,13 @@ userSchema.pre('save', async function(next) {
     }
 });
 
-userSchema.method('comparePassword', function(candidatePassword) {
-    return bcrypt.compare(candidatePassword, this.password);
+userSchema.method('comparePassword', async function(candidatePassword) {
+    console.log(`Comparing ${candidatePassword} to ${this.password}`);
+
+    const valid = await bcrypt.compare(candidatePassword, this.password)
+
+    console.log(valid);
+    return valid;
 });
 
 export const User = model('user', userSchema);
