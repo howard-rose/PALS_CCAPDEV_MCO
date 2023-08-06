@@ -1,0 +1,18 @@
+<script src="/static/js/post_click.js"></script>
+<script src="/static/js/user_click.js"></script>
+<script src="/static/js/create_post_prompt.js"></script>
+{{> navbar}}
+<div id="create-post-container">
+    <div id="create-post-prompt" class="bold">
+        Create post
+    </div>
+</div>
+<div id="post-container">
+    {{#if posts}}
+    {{#each posts}}
+    {{> post this}}
+    {{/each}}
+    {{else}}
+    <p>No posts to show</p>
+    {{/if}}
+</div>

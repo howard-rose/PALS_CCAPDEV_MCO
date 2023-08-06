@@ -1,0 +1,167 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
+
+:root {
+    --border-gray: rgba(237,239,241,255);
+    --light-gray: rgba(218,224,230,255);
+    --lighter-gray: rgba(246,247,248,255);
+    --info-gray: rgba(181,182,184,255);
+    --link-blue: rgb(0, 112, 224);
+    --button-blue: rgba(0,121,211,255);
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    background-color: var(--light-gray);
+}
+
+body {
+    margin: 0;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.light {
+    font-weight: light;
+}
+
+#post-container {
+    padding-top: 20px;
+    padding-left: 50px;
+    padding-right: 50px;
+    margin: 0;
+    border: 0;
+}
+
+.post-preview, .post-main-view {
+    font-size: 18px;
+    background-color: white;
+    width: 50%;
+    margin: auto;
+    margin-bottom: 10px;
+    border: 1px solid var(--border-gray);
+    padding: 10px;
+    cursor: pointer;
+}
+
+.post-main-bar > div {
+    margin: 5px;
+}
+
+.post-vote-bar {
+    margin: 5px;
+}
+
+.vote {
+    height: 15px;
+    width: 15px;
+    display: inline-block;
+    background-size: contain;
+}
+
+.vote:hover {
+    background-color: var(--lighter-gray);
+}
+
+.upvote.off {
+    background-image: url('../img/upvote grey.png');
+}
+
+.downvote.off {
+    background-image: url('../img/downvote grey.png');
+}
+
+.upvote.on {
+    background-image: url('../img/upvote.png');
+}
+
+.downvote.on {
+    background-image: url('../img/downvote.png');
+}
+
+.post-info {
+    font-size: 12px;
+    color: var(--info-gray);
+}
+
+.post-username {
+    color: var(--link-blue);
+}
+
+.post-username:hover {
+    text-decoration: underline;
+}
+
+#create-post-prompt {
+    font-size: 24px;
+    background-color: var(--info-gray);
+    width: 50%;
+    margin: auto;
+    margin-bottom: 10px;
+    border: 1px solid var(--border-gray);
+    padding: 10px;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.25s ease-in, color 0.25s ease-in, border-radius 0.25s linear;  
+    border-radius: 5px;
+}
+
+#create-post-prompt:hover {
+    background-color: var(--link-blue);
+    color: white;
+    border-radius: 15px;
+}
+
+#create-post-container {
+    padding-top: 30px;
+    padding-left: 50px;
+    padding-right: 50px;
+    margin: 0;
+    border: 0;
+}
+
+button {
+    background-color: var(--button-blue);
+    color: white;
+    padding: 7px;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-size: 16px;
+    border-radius: 20px;
+    font-weight: bold;
+    border-color: var(--button-blue);
+    border-style: solid;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+.header-container {
+    width: 50%;
+    margin: auto;
+    padding: 10px;
+}
+
+#profile-comment-container {
+    font-size: 18px;
+    background-color: white;
+    width: 50%;
+    margin: auto;
+    margin-bottom: 10px;
+    border: 1px solid var(--border-gray);
+    padding: 10px;
+}
+
+.reply {
+    padding: 2px;
+    font-size: 14px;
+}
+
+textarea {
+    width: 98%;
+    resize: vertical;
+    padding: 5px;
+    font-size: 16px;
+    display: block;
+    margin: auto;
+    min-height: 100px;
+}

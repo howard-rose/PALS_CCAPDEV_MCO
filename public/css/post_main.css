@@ -1,0 +1,9 @@
+#comment-container {
+    border-top: 2px solid var(--border-gray);
+    padding-top: 10px;
+}
+
+.comment {
+    margin: 5px;
+    padding-left: 20px;
+}

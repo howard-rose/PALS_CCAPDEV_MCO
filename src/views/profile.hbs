@@ -1,0 +1,50 @@
+<script src="/static/js/post_click.js"></script>
+{{> navbar}}
+<div class="header-container">
+    <h1>Welcome to {{username}}'s profile page!</h1>
+    <h2>Bio:</h2><p>{{profile.bio}}</p>
+</div>
+<div class="header-container">
+    <h2>Posts: </h3>
+</div>
+<div id="post-container">
+    {{#if posts}}
+    {{#each posts}}
+    {{> post this}}
+    {{/each}}
+    {{else}}
+    <div class="header-container">
+        <h3>No posts to show</h3>
+    </div>
+    {{/if}}
+</div>
+<div class="header-container">
+    <h2>Comments: </h3>
+</div>
+<!--
+<div id="profile-comment-container">
+    <div id="comment-container">
+        {{#if comments}}
+        {{#each comments}}
+        {{> comment_solo this}}
+        {{/each}}
+        {{else}}
+        <div class="header-container">
+            <h3>No comments to show</h3>
+        </div>
+        {{/if}}
+    </div>
+</div>-->
+{{#if comments}}
+<div id="profile-comment-container">
+    <div id="comment-container">
+        {{#each comments}}
+        {{> comment_solo this}}
+        {{/each}}
+        {{else}}
+        <div class="header-container">
+            <h3>No comments to show</h3>
+        </div>
+    </div>
+</div>
+{{/if}}

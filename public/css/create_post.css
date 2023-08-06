@@ -1,0 +1,31 @@
+input {
+    width: 98%;
+    padding: 5px;
+    font-size: 20px;
+    display: block;
+    margin: auto;
+}
+
+fieldset {
+    background-color: white;
+    border: 1px solid var(--border-gray);
+    width: 50%;
+    margin: auto;
+    padding: 10px;
+    display: block;
+}
+
+legend {
+    background-color: black;
+    color: white;  
+    padding: 5px;
+    font-weight: bold;
+}
+
+#create-post-container {
+    padding-top: 20px;
+    padding-left: 50px;
+    padding-right: 50px;
+    margin: 0;
+    border: 0;
+}

@@ -1,0 +1,17 @@
+<script src="/static/js/nav.js"></script>
+<link rel="stylesheet" href="/static/css/navbar.css">
+<nav id="navbar">
+    <span class="nav-home bold">redidit</span>
+    <span class="nav-search">
+        <form id="nav-search-form">
+            <input id="nav-search-bar" type="search" placeholder="Search Redidit">
+        </form>
+    </span>
+    <span class="nav-user">
+        {{#if current_user}}
+        {{current_user}}
+        {{else}}
+        Anonymous
+        {{/if}}
+    </span>
+</nav>

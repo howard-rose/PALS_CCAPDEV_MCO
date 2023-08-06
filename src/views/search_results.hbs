@@ -1,0 +1,17 @@
+<script src="/static/js/post_click.js"></script>
+<script src="/static/js/user_click.js"></script>
+{{> navbar}}
+<div id="post-container">
+    <div class="header-container">
+        <h1>Search results:</h1>
+    </div>
+    {{#if posts}}
+    {{#each posts}}
+    {{> post this}}
+    {{/each}}
+    {{else}}
+    <div class="header-container">
+        <h3>No posts to show</h3>
+    </div>
+    {{/if}}
+</div>

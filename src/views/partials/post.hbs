@@ -1,0 +1,21 @@
+<div class="post-main-view" id="{{_id}}">
+    <div class="post-main-bar">
+        <div class="post-info light">
+            Posted by <span class="post-username">{{user.username}} </span> on {{date}}
+        </div>
+        <div class="post-title bold">
+            {{title}}
+        </div>
+        <div class="post-description">
+            {{body}}
+        </div>
+    </div>
+    <div class="post-vote-bar">
+        <span class="vote upvote off"></span>
+        <span class="vote-counter"> {{score}} </span>
+        <span class="vote downvote off"></span>
+        <span class="comment-count">{{comments.length}} comments</span>
+    </div>    
+    <div id="comment-container">
+    </div>
+</div>
