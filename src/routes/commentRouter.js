@@ -21,11 +21,58 @@ commentRouter.post('/createComment', async (req, res) => {
     });
 
     newComment.save().then((result) => {
-        res.sendStatus(200);
+        //res.child_id = newComment._id;
+        //res.sendStatus(200);
+        console.log(newComment._id);
+        res.status(200);
+        return newComment._id;
     }).catch(err => {
         console.error(err);
         res.sendStatus(500);
     });
+});
+
+commentRouter.post('/replyPost', async (req, res) => {
+    console.log('/replyPost POST request received');
+
+    try {
+        const parent = await Post.findById(req.body.parent_id).exec();
+        parent.comments.push(req.body.child_id);
+        parent.save()
+
+        console.log(parent);
+        console.log(parent.comments);
+
+        res.sendStatus(200);
+    } catch (err) {
+        console.error(err);
+        res.sendStatus(500);
+    }
+});
+
+commentRouter.post('/replyComment', async (req, res) => {
+    console.log('/replyComment POST request received');
+
+    /*
+    const parent = Comment.findById(req.body.parent_id).exec();
+    parent.comments.push(req.body.child_id);
+
+    parent.save().then((result) => {
+        res.sendStatus(200);
+    }).catch(err => {
+        console.error(err);
+        res.sendStatus(500);
+    });*/
+
+    try {
+        const parent = await Comment.findById(req.body.parent_id).exec();
+        parent.comments.push(req.body.child_id);
+        parent.save()
+        res.sendStatus(200);
+    } catch (err) {
+        console.error(err);
+        res.sendStatus(500);
+    }
 });
 
 commentRouter.post('/deleteComment/:commentId', async (req, res) => {

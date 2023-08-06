@@ -1,5 +1,3 @@
-// .env
-import 'dotenv/config';
 // Web-app
 import express from 'express';
 import exphbs from 'express-handlebars';
@@ -40,7 +38,7 @@ async function main() {
 
     app.use(router);
 
-    app.listen(process.env.SERVER_PORT, () => {
+    app.listen(process.env.PORT, () => {
         console.log("Express app now listening");
         connect().then(() => {
             console.log("Now connected to MongoDB server");

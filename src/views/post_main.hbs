@@ -21,8 +21,7 @@
             <span class="comment-count">{{comments.length}} comments</span>
         </div>
         <div id="comment-container">
-            <textarea id="post-reply" name="post-reply" placeholder="What are your thoughts?"></textarea>
-            <button class="comment">Comment</button>
+            {{> reply_prompt}}
             <br>
             {{#if comments}}
             {{#each comments}}
