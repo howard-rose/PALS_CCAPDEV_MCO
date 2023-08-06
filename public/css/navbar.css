@@ -43,6 +43,40 @@
 
 .nav-user {
     flex-grow: 1;
-    text-align: right;
+    text-align: center;
     cursor: pointer;
+    border: solid 1px transparent;
+}
+
+/* DROPDOWN */
+.nav-user {
+    overflow: hidden;
+    float: left;
+}
+
+.nav-user:hover {
+    border: solid 1px var(--light-gray);
+}
+
+#dropdown-container {
+    display: none;
+    position: absolute;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    background-color: white;
+    z-index: 1;
+}
+
+#dropdown-container.show {
+    display: block; 
+}
+
+#dropdown-container a {
+    display: block;
+    text-decoration: none;
+    padding: 5px;
+    color: inherit;
+}
+
+#dropdown-container a:hover {
+    background-color: #ddd;
 }

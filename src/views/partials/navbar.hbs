@@ -7,11 +7,22 @@
             <input id="nav-search-bar" type="search" placeholder="Search Redidit">
         </form>
     </span>
-    <span class="nav-user">
-        {{#if current_user}}
-        {{current_user}}
-        {{else}}
-        Anonymous
-        {{/if}}
-    </span>
+    <div class="nav-user">
+        <div id="dropbtn">
+            {{#if current_user}}
+            {{current_user}}
+            {{else}}
+            Anonymous
+            {{/if}}
+        </div>
+        <div id="dropdown-container">
+            {{#if current_user}}
+            <a id="dropdown-profile" href="/profile/{{current_user}}">View Profile</a>
+            <a id="dropdown-logout">Logout</a>
+            {{else}}
+            <a id="dropdown-register" href="/register">Register</a>
+            <a id="dropdown-login" href="/login">Login</a>
+            {{/if}}
+        </div>
+    </div>
 </nav>

@@ -7,10 +7,10 @@ document.addEventListener('DOMContentLoaded', () => {
         window.location.href = "/";
     });
 
-    navUser?.addEventListener('click', (e) => {
+    /*navUser?.addEventListener('click', (e) => {
         e.preventDefault();
         window.location.href = "/register";
-    });
+    });*/
 
     const navSearchForm = document.querySelector('#nav-search-form');
     navSearchForm?.addEventListener('submit', (e) => {
@@ -22,4 +22,36 @@ document.addEventListener('DOMContentLoaded', () => {
 
         window.location.href = `/search/${searchQuery}`;
     });
+
+    // DROPDOWN
+    const dropBtn = document.querySelector('#dropbtn');
+    const dropdownContainer = document.querySelector('#dropdown-container')
+    const logoutBtn = document.querySelector('#dropdown-logout');
+    
+    dropBtn.addEventListener('click', (e) => {
+        dropdownContainer.classList.toggle('show');
+    });
+
+    window.onclick = (e) => {
+        if (!e.target.matches(dropBtn)) {
+            if (dropdownContainer.classList.contains('show')) {
+                dropdownContainer.classList.remove('show');
+            }
+        }
+    }
+
+    logoutBtn?.addEventListener('click', (e) => {
+        e.preventDefault();
+
+        fetch('/logout', {
+            method: 'POST',
+        }).then((res) => {
+            console.log(`Server responded: ${res}`);
+            if (res.status === 200) {
+                window.location.href = '/';
+            }
+        }).catch(err => {
+            console.error(err);
+        });
+    })
 });
