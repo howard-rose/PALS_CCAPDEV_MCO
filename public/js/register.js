@@ -27,8 +27,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }).then((res) => {
             console.log(`Server responded: ${res}`);
             if (res.status === 200) {
-                //INSERT CODE TO GO BACK TO HOME, LOGGED IN
                 window.location.href = '/';
+            } else {
+                window.location.href = '/register';
             }
         }).catch(err => {
             console.error(err);

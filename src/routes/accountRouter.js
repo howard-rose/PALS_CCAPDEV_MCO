@@ -48,7 +48,7 @@ accountRouter.get('/register', (req, res) => {
     });
 });
 
-accountRouter.post('/register', (req, res) => {
+accountRouter.post('/register', (req, res, next) => {
     console.log('/register POST request received:');
     //console.log(req);
     
@@ -70,7 +70,12 @@ accountRouter.post('/register', (req, res) => {
     });
 
     newUser.save().then((result) => {
-        res.redirect(200, '/');
+        req.login(newUser, (err2) => {
+            if (err2) {
+                return next(err2);
+            } 
+            res.redirect(200, '/');
+        });
     }).catch(err => {
         console.error(err);
         res.sendStatus(500);
@@ -90,6 +95,15 @@ accountRouter.get('/loginfail', (req, res) => {
 
 accountRouter.post('/login', passport.authenticate('local', { failureRedirect: '/loginfail', failureMessage: true }), (req, res) => {
     res.sendStatus(200);
+});
+
+accountRouter.post('/logout', (req, res, next) => {
+    req.logout((err) => {
+        if (err) {
+            return next(err);
+        }
+        res.sendStatus(200);
+    });
 });
 
 export default accountRouter;
