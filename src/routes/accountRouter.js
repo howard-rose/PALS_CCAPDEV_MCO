@@ -1,4 +1,3 @@
-import 'dotenv/config.js';
 import { Router } from 'express';
 import mongoose from 'mongoose';
 import { User } from '../models/user.js';
@@ -32,12 +31,14 @@ passport.use(new LocalStrategy(async (username, password, done) => {
 }));
 
 passport.serializeUser((user, done) => {
+    console.log('USER BEING SERIALIZED');
     return done(null, user.username);
 });
 
-passport.deserializeUser(async (user, done) => {
-    const foundUser = await User.findOne({username: user.username}).lean().exec();
-    return done(null, foundUser);
+passport.deserializeUser((user, done) => {
+    console.log('USER BEING DESERIALIZED');
+    //const foundUser = User.findOne({username: user.username}).lean().exec();
+    return done(null, user);
 });
 const accountRouter = Router();
 

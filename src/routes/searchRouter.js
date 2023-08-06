@@ -1,4 +1,3 @@
-import 'dotenv/config.js';
 import { Router } from 'express';
 import { User } from '../models/user.js';
 import { Profile } from '../models/profile.js';
@@ -18,7 +17,7 @@ searchRouter.get('/search/:searchQuery', async (req, res) => {
 
     res.render('search_results', {
         title: 'Search results',
-        current_user: process.env.CURRENT_USER,
+        current_user: (req.isAuthenticated()) ? req.user : null,
         posts: results
     });
 });

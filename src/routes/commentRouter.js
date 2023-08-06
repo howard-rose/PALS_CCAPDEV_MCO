@@ -1,4 +1,3 @@
-import 'dotenv/config.js';
 import { Router } from 'express';
 import { Post } from '../models/post.js';
 import { PostVote } from '../models/post_vote.js';
@@ -10,11 +9,13 @@ import { loadPostById } from './helpers.js';
 const commentRouter = Router();
 
 commentRouter.post('/createComment', async (req, res) => {
+    const current_user = (req.isAuthenticated()) ? req.user : null;
+
     console.log('/createComment POST request received');
 
     const newComment = new Comment({
         body: req.body.body,
-        user: await User.findOne({username: process.env.CURRENT_USER}, '_id').lean().exec(),
+        user: await User.findOne({username: current_user}, '_id').lean().exec(),
         date: new Date(),
         comments: []
     });

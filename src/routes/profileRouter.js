@@ -1,4 +1,3 @@
-import 'dotenv/config.js';
 import { Router } from 'express';
 import { User } from '../models/user.js';
 import { Profile } from '../models/profile.js';
@@ -13,7 +12,7 @@ profileRouter.get('/profile/:username', async (req, res) => {
 
     user.posts = await loadPosts({user: user._id});
     user.comments = await loadComments({user: user._id});
-    user.current_user = process.env.CURRENT_USER;
+    user.current_user = (req.isAuthenticated()) ? req.user : null;
 
     res.render('profile', user);
 });

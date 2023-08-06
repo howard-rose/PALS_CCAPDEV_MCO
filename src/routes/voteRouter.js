@@ -1,4 +1,3 @@
-import 'dotenv/config.js';
 import { Router } from 'express';
 import { Post } from '../models/post.js';
 import { PostVote } from '../models/post_vote.js';

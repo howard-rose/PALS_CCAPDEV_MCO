@@ -1,4 +1,3 @@
-import 'dotenv/config.js';
 import { Router } from 'express';
 import { Post } from '../models/post.js';
 import { PostVote } from '../models/post_vote.js';
@@ -19,7 +18,7 @@ postRouter.get('/post/:postId', async (req, res) => {
     console.log('Post comments: ');
     //console.log(currPost.comments);
 
-    currPost.current_user = process.env.CURRENT_USER;
+    currPost.current_user = (req.isAuthenticated()) ? req.user : null;
     
     res.render('post_main', currPost);
 });
@@ -27,17 +26,19 @@ postRouter.get('/post/:postId', async (req, res) => {
 postRouter.get('/createPost', (req, res) => {
     res.render('create_post', {
         title: 'Create a post',
-        current_user: process.env.CURRENT_USER
+        current_user: (req.isAuthenticated()) ? req.user : null
     });
 });
 
 postRouter.post('/createPost', async (req, res) => {
+    const current_user = (req.isAuthenticated()) ? req.user : null;
+
     console.log('/createPost POST request received');
 
     const newPost = new Post({
         title: req.body.title,
         body: req.body.body,
-        user: await User.findOne({username: process.env.CURRENT_USER}, '_id').lean().exec(),
+        user: await User.findOne({username: current_user}, '_id').lean().exec(),
         date: new Date(),
         tags: req.body.tags,
         comments: []

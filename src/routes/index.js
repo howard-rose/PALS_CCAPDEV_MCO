@@ -1,4 +1,3 @@
-import 'dotenv/config.js';
 import { Router } from 'express';
 import accountRouter from './accountRouter.js';
 import postRouter from './postRouter.js';
@@ -13,9 +12,17 @@ import { getScorePost, loadPosts } from './helpers.js';
 const router = Router();
 
 router.get('/', async (req, res) => {
+    let current_user = null;
+    
+    console.log(`User authenticated: ${req.isAuthenticated()}`);
+    if (req.isAuthenticated()) {
+        console.log(req.user);
+        current_user = req.user;
+    } 
+
     res.render('index', {
         title: 'Redidit - Dive into anything',
-        current_user: process.env.CURRENT_USER,
+        current_user: current_user,
         posts: await loadPosts({})
     });
 });
